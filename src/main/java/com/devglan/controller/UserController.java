@@ -25,4 +25,10 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @RequestMapping(value="/sign-up", method = RequestMethod.POST)
+    public User saveUser(@RequestBody User user){
+        System.out.println(user.getPassword());
+        return userService.save(user);
+    }
+
 }
