@@ -1,6 +1,7 @@
 package com.devglan.controller;
 
 import com.devglan.model.User;
+import com.devglan.model.UserDto;
 import com.devglan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +26,8 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @RequestMapping(value="/sign-up", method = RequestMethod.POST)
-    public User saveUser(@RequestBody User user){
-        System.out.println(user.getPassword());
+    @RequestMapping(value="/sign-up", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public User saveUser(@RequestBody UserDto user){
         return userService.save(user);
     }
 

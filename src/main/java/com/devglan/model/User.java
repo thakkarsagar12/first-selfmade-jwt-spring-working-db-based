@@ -20,6 +20,17 @@ public class User {
     @Column
     private int age;
 
+    public User(String username, String password, long salary, int age) {
+        this.username = username;
+        this.password = password;
+        this.salary = salary;
+        this.age = age;
+    }
+
+    public User() {
+
+    }
+
     public long getId() {
         return id;
     }

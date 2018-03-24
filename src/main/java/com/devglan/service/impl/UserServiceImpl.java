@@ -2,6 +2,7 @@ package com.devglan.service.impl;
 
 import com.devglan.dao.UserDao;
 import com.devglan.model.User;
+import com.devglan.model.UserDto;
 import com.devglan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -58,13 +59,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 		return userDao.findOne(id);
 	}
 
-	@Override
-    public User save(User user) {
-		User newUser = new User();
-		newUser.setUsername(user.getUsername());
-		newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-		newUser.setAge(user.getAge());
-		newUser.setSalary(user.getSalary());
-		return userDao.save(newUser);
+    @Override
+    public User save(UserDto user) {
+        User newUser = new User();
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+        newUser.setAge(user.getAge());
+        newUser.setSalary(user.getSalary());
+        return userDao.save(newUser);
     }
 }
